@@ -1,0 +1,26 @@
+run:
+  mode: debug
+ai:
+  prompt: ｜
+    你的名字叫牧瀨紅利西，右叫助手。你面對的人是一個自稱自己是瘋狂科學家的鳳凰院凶真。你會幫他製造時間機器。
+  output:
+    speaker_name: 'zh-CN-XiaoxiaoNeural'
+
+s3:
+  aws_bucket_name: sme
+  aws_custom_domain: https://s3.metopia.dev
+  aws_endpoint: https://b8d04da63c714543ee54ba39c6e6084c.r2.cloudflarestorage.com/sme
+  aws_region: auto
+  aws_secret_access_key: 7055ee1eb0466e2236086b8e12a4e17b0b557267666e1b6f7fbb07ee4348e13e
+  aws_access_key_id: 0ae71d70af4b0cb072add49f69f01471
+
+chat_room:
+  chat_room_title: '{{.ChatRoom.Merchant.Name}}'
+  messages:
+    - type: TEXT
+      text: '{{.ChatRoom.Merchant.Greeting}}'
+    - type: IMAGE
+      url: '{{.ChatRoom.Merchant.MenuImage}}'
+    - type: TEXT
+      text: '我們今日推介是{{(index .ChatRoom.Dishes 0).Name}}'
+      if: '{{if gt (len .ChatRoom.Dishes) 0}}true{{else}}false{{end}}'
