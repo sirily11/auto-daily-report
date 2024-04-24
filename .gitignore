@@ -3,3 +3,5 @@ wire_gen.go
 .idea
 .vercel
 mock_*.go
+github.json
+.env
